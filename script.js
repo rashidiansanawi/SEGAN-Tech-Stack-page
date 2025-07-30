@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "name": "Stripe / PayPal",
         "group": "External Services (Payments)",
         "brief": "Secure payment processing integration.",
-        "detail": "Leading payment gateway services like Stripe or PayPal are integrated into your NestJS backend. They handle the secure processing of payments, ensuring PCI compliance. Your backend consumes their official Node.js SDKs, manages payment intents, and processes webhooks for status updates. The frontend uses their secure client-side SDKs to collect sensitive payment information without it touching your servers.",
+        "detail": "Leading payment gateway services like Stripe or PayPal are integrated into your NestJS backend. They handle the secure processing of payments, ensuring PCI compliance. Your backend consumes their official Node.js SDKs, manages payment intents, and processes webhooks for status updates. The frontend uses their secure client-side SDKs to collect sensitive card details without it touching your servers.",
         "acronym_text": ""
       },
       {
@@ -145,6 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalTitle = document.getElementById('modal-title');
     const modalSectionsContainer = document.getElementById('modal-sections-container');
     const closeModalButton = document.querySelector('.close-modal-button');
+
+    const launchDemoBtn = document.getElementById('launch-demo-btn');
+    const liveDemoModal = document.getElementById('live-demo-modal');
+    const closeLiveDemoButton = document.querySelector('.close-live-demo-button');
 
 
     // Helper function to render more advanced markdown (emojis, bold, italics, special highlight)
@@ -276,6 +280,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Event listener for "Launch Live Demo" button
+    launchDemoBtn.addEventListener('click', () => {
+        liveDemoModal.style.display = 'flex';
+    });
+
+    // Event listener for closing the live demo modal
+    closeLiveDemoButton.addEventListener('click', () => {
+        liveDemoModal.style.display = 'none';
+    });
+
+    liveDemoModal.addEventListener('click', (event) => {
+        if (event.target === liveDemoModal) {
+            liveDemoModal.style.display = 'none';
+        }
+    });
+
 
     // Global keyboard accessibility (Escape key to close any active modal/popup)
     document.addEventListener('keydown', (event) => {
@@ -285,6 +305,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (proposalModal.style.display === 'flex') {
                 proposalModal.style.display = 'none';
+            }
+            if (liveDemoModal.style.display === 'flex') {
+                liveDemoModal.style.display = 'none';
             }
         }
     });
