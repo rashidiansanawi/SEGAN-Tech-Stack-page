@@ -1,0 +1,288 @@
+:root {
+    --color-dark-blue: #1a2a3a; /* Deeper for header */
+    --color-medium-blue: #3498db;
+    --color-light-blue: #e8f3fb;
+    --color-green: #2ecc71; /* Brighter green */
+    --color-orange: #f39c12;
+    --color-purple: #9b59b6; /* Slightly brighter purple */
+    --color-red: #e74c3c;
+    --color-text: #34495e; /* Darker text for readability */
+    --color-background: #ecf0f1;
+    --shadow-light: 0 4px 15px rgba(0,0,0,0.1);
+    --shadow-pop: 0 10px 25px rgba(0,0,0,0.2);
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+header {
+    background: linear-gradient(135deg, var(--color-dark-blue) 0%, #2980b9 100%);
+    color: #ecf0f1;
+    padding: 2.5em 0;
+    text-align: center;
+    box-shadow: var(--shadow-light);
+    margin-bottom: 3em;
+    position: relative;
+    z-index: 10;
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 0 0.2em;
+    font-size: 3em;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.project-acronym {
+    font-size: 0.6em;
+    vertical-align: super;
+    opacity: 0.8;
+}
+
+header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+    margin-top: 0.5em;
+}
+
+.acronym-explanation {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 1.5em;
+    color: rgba(255,255,255,0.9);
+}
+
+.acronym-letter-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #ffd700; /* Gold color for acronym letters */
+}
+
+/* Mind Map Container Grid */
+.mind-map-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider cards */
+    gap: 3em; /* Increased gap for more breathing room */
+    max-width: 1300px;
+    margin: 0 auto 4em auto;
+    padding: 0 2em;
+}
+
+/* Base Node Styles */
+.map-node {
+    background-color: #ffffff;
+    border-radius: var(--border-radius);
+    padding: 1.8em 1.5em;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px; /* Ensure some height for visual consistency */
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    border-left: 8px solid transparent; /* Base for colored border */
+}
+
+.map-node:hover {
+    transform: translateY(-10px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: var(--shadow-pop);
+}
+
+.node-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.7em;
+    font-weight: 700;
+    color: var(--color-dark-blue);
+    margin-top: 0;
+    margin-bottom: 1.2em;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.node-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 70px; /* Thicker underline */
+    height: 4px; /* Thicker underline */
+    background-color: var(--color-medium-blue);
+    border-radius: 2px;
+}
+
+/* Component Pills within Nodes */
+.component-pill {
+    background-color: var(--color-light-blue);
+    color: var(--color-dark-blue);
+    padding: 0.8em 1.4em; /* Larger pills */
+    margin: 0.6em 0;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Small shadow for pills */
+    display: inline-block;
+}
+
+.component-pill:hover {
+    background-color: var(--color-medium-blue);
+    color: white;
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Specific Node Colors */
+.database-node { border-left-color: #007bff; background-color: #eaf3ff; }
+.database-node .node-title::after { background-color: #007bff; }
+.database-node .component-pill { background-color: #cce5ff; color: #004085; }
+.database-node .component-pill:hover { background-color: #007bff; color: white; }
+
+.backend-node { border-left-color: var(--color-green); background-color: #e6ffee; }
+.backend-node .node-title::after { background-color: var(--color-green); }
+.backend-node .component-pill { background-color: #d4edda; color: #155724; }
+.backend-node .component-pill:hover { background-color: var(--color-green); color: white; }
+
+.frontend-node { border-left-color: var(--color-orange); background-color: #fff8e6; }
+.frontend-node .node-title::after { background-color: var(--color-orange); }
+.frontend-node .component-pill { background-color: #ffeeba; color: #856404; }
+.frontend-node .component-pill:hover { background-color: var(--color-orange); color: var(--color-dark-blue); }
+
+.external-node { border-left-color: var(--color-red); background-color: #ffebe6; }
+.external-node .node-title::after { background-color: var(--color-red); }
+.external-node .component-pill { background-color: #f7d7da; color: #721c24; }
+.external-node .component-pill:hover { background-color: var(--color-red); color: white; }
+
+.deployment-node { border-left-color: var(--color-purple); background-color: #f6e6ff; }
+.deployment-node .node-title::after { background-color: var(--color-purple); }
+.deployment-node .component-pill { background-color: #e3d2f9; color: #4b0082; }
+.deployment-node .component-pill:hover { background-color: var(--color-purple); color: white; }
+
+
+/* Info Popup */
+.info-popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7); /* Darker overlay */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px); /* Stronger blur */
+}
+
+.info-content {
+    background-color: #ffffff;
+    padding: 3.5em 3em; /* More padding */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-pop);
+    position: relative;
+    max-width: 700px; /* Wider popup for more text */
+    width: 90%;
+    text-align: center;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: fadeInSlideUp 0.5s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Slower, smoother animation */
+}
+
+@keyframes fadeInSlideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-button {
+    color: var(--color-gray);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px; /* Larger close button */
+    font-weight: normal;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: var(--color-dark-blue);
+}
+
+#popup-title {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-dark-blue);
+    font-size: 2.2em; /* Larger title */
+    margin-bottom: 0.4em;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+#popup-group {
+    font-size: 1.1em;
+    color: var(--color-medium-blue);
+    font-weight: 600;
+    margin-bottom: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+#popup-brief {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1.5em;
+    font-size: 1.1em;
+}
+
+#popup-description {
+    font-size: 1.15em;
+    color: var(--color-text);
+    line-height: 1.8;
+    text-align: justify; /* Justify text for better readability */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+    header p {
+        font-size: 1em;
+    }
+    .acronym-explanation {
+        font-size: 0.9em;
+    }
+    .mind-map-container {
+        grid-template-columns: 1fr;
+        padding: 0 1em;
+    }
+    .node-title {
+        font-size: 1.4em;
+    }
+    .component-pill {
+        padding: 0.6em 1.2em;
+        font-size: 0.9em;
+    }
+    .info-content {
+        padding: 2em 1.5em;
+    }
+    #popup-title {
+        font-size: 1.6em;
+    }
+    #popup-brief, #popup-description {
+        font-size: 1em;
+    }
+}
