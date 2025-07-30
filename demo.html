@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEGAN Demo: Login, Payment & RBAC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="demo-style.css">
+</head>
+<body>
+    <header class="demo-header">
+        <h1>SEGAN Application Demo</h1>
+        <p>Login, Payment Gateway & Role-Based Access Control Mock</p>
+    </header>
+
+    <main class="demo-main">
+        <section id="login-section" class="demo-section">
+            <h2>User Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <p id="login-message" class="message error"></p>
+                <button type="submit" class="demo-button login-button">Login</button>
+            </form>
+            <div class="mock-user-info">
+                <h3>Mock Users:</h3>
+                <ul>
+                    <li>Student: user1/pass1</li>
+                    <li>Teacher: user2/pass2</li>
+                    <li>Management: user3/pass3</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="dashboard-section" class="demo-section hidden">
+            <h2>Welcome, <span id="display-username"></span>!</h2>
+            <p>Your Role: <span id="display-role"></span></p>
+
+            <div class="dashboard-actions">
+                <div class="action-card payment-card">
+                    <h3>Payment Gateway Mock</h3>
+                    <p>Simulate a payment transaction.</p>
+                    <div class="form-group">
+                        <label for="amount">Amount (USD):</label>
+                        <input type="number" id="amount" value="50.00" min="1" step="0.01">
+                    </div>
+                    <button class="demo-button pay-button">Pay Now</button>
+                    <p id="payment-message" class="message"></p>
+                </div>
+
+                <div class="action-card email-card">
+                    <h3>Transactional Email Mock</h3>
+                    <p>Simulate sending a confirmation email.</p>
+                    <div class="form-group">
+                        <label for="email-type">Email Type:</label>
+                        <select id="email-type">
+                            <option value="payment_confirmation">Payment Confirmation</option>
+                            <option value="welcome_new_user">Welcome New User</option>
+                            <option value="password_reset">Password Reset</option>
+                        </select>
+                    </div>
+                    <button class="demo-button email-button">Send Email</button>
+                    <p id="email-message" class="message"></p>
+                </div>
+
+                <div class="action-card rbac-card">
+                    <h3>Role-Based Access Mock</h3>
+                    <p>Access level for <span id="rbac-role-display"></span></p>
+                    <div id="rbac-content">
+                        <!-- Content dynamically changes based on role -->
+                    </div>
+                </div>
+            </div>
+            
+            <button class="demo-button logout-button">Logout</button>
+        </section>
+    </main>
+
+    <script src="demo-script.js"></script>
+</body>
+</html>
