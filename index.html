@@ -17,12 +17,14 @@
             <span class="acronym-letter-header">P</span>risma &nbsp;&bull;&nbsp; 
             <span class="acronym-letter-header">N</span>ode.js/NestJS
         </p>
+        <button id="view-proposal-btn" class="view-proposal-button">View Project Proposal Overview</button>
     </header>
 
     <main class="mind-map-container">
         <!-- Nodes will be dynamically added here by JavaScript -->
     </main>
 
+    <!-- Tech Stack Info Popup -->
     <div id="info-popup" class="info-popup">
         <div class="info-content">
             <span class="close-button">&times;</span>
@@ -30,6 +32,17 @@
             <p id="popup-group"></p>
             <p id="popup-brief"></p>
             <p id="popup-description"></p>
+        </div>
+    </div>
+
+    <!-- Project Proposal Overview Modal -->
+    <div id="proposal-modal" class="proposal-modal">
+        <div class="modal-content">
+            <span class="close-modal-button">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-sections-container">
+                <!-- Sections populated by JS -->
+            </div>
         </div>
     </div>
 
