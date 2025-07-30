@@ -18,6 +18,7 @@
             <span class="acronym-letter-header">N</span>ode.js/NestJS
         </p>
         <button id="view-proposal-btn" class="view-proposal-button">View Project Proposal Overview</button>
+        <button id="launch-demo-btn" class="view-proposal-button demo-launch-button">Launch Live Demo</button>
     </header>
 
     <main class="mind-map-container">
@@ -43,6 +44,15 @@
             <div id="modal-sections-container">
                 <!-- Sections populated by JS -->
             </div>
+        </div>
+    </div>
+
+    <!-- Live Demo Modal -->
+    <div id="live-demo-modal" class="live-demo-modal">
+        <div class="live-demo-content">
+            <span class="close-live-demo-button">&times;</span>
+            <h2>Live Demo: SEGAN Application</h2>
+            <iframe id="demo-iframe" src="demo.html" frameborder="0"></iframe>
         </div>
     </div>
 
