@@ -69,12 +69,15 @@ header p {
     color: #ffd700; /* Gold color for acronym letters */
 }
 
+/* Common button style, used for proposal and demo launch */
 .view-proposal-button {
     background-color: #ffd700; /* Gold button */
     color: var(--color-dark-blue);
     border: none;
     padding: 15px 30px;
     margin-top: 2em;
+    margin-left: 10px; /* Space between buttons */
+    margin-right: 10px; /* Space between buttons */
     border-radius: 50px;
     font-size: 1.1em;
     font-weight: bold;
@@ -87,6 +90,16 @@ header p {
     background-color: #ffe033;
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.demo-launch-button {
+    background-color: #2ecc71; /* Green for demo */
+    color: white;
+}
+
+.demo-launch-button:hover {
+    background-color: #27ae60;
+    transform: translateY(-3px);
 }
 
 
@@ -402,24 +415,84 @@ header p {
 }
 
 
-/* Responsive adjustments for modal */
+/* Live Demo Modal Styles */
+.live-demo-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1002; /* Even higher than proposal modal */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9); /* Very dark overlay */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    padding: 20px;
+}
+
+.live-demo-content {
+    background-color: var(--color-background); /* Use the page background for content */
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    position: relative;
+    max-width: 1000px; /* Max width for the demo */
+    max-height: 90vh; /* Max height for the demo */
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInFromTop 0.6s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.live-demo-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-dark-blue);
+    font-size: 1.8em;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--color-light-blue);
+}
+
+.close-live-demo-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 38px;
+    font-weight: normal;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-live-demo-button:hover {
+    color: var(--color-red);
+}
+
+#demo-iframe {
+    flex-grow: 1; /* Make iframe fill available space */
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: white; /* Ensure iframe background is white */
+}
+
+/* Responsive adjustments for demo modal */
 @media (max-width: 768px) {
-    .modal-content {
-        margin: 20px auto;
-        padding: 20px;
-        max-width: 95%;
+    .live-demo-content {
+        width: 100%;
+        height: 100%;
+        max-height: 100vh;
+        max-width: 100vw;
+        border-radius: 0;
     }
-    #modal-title {
-        font-size: 2em;
-    }
-    .modal-section h3 {
+    .live-demo-content h2 {
         font-size: 1.5em;
+        padding: 15px;
     }
-    .modal-section ul li {
-        font-size: 1em;
-    }
-    .close-modal-button {
+    .close-live-demo-button {
         font-size: 30px;
-        right: 15px;
+        right: 10px;
     }
 }
